@@ -60,6 +60,10 @@ for item in date_dict.items():
     if value == user_date: 
         keys.append(key) # If date in item matches input, THEN add to end of "keys" list from above
 
+# Report if no records were found
+if len(keys) == 0:
+    print(f"No records were found on {user_date}")
+
 #Loop through keys and report locations
 for key in keys:
     location = location_dict[key] #save the location of record-ids
