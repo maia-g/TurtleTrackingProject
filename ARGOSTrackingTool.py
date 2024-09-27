@@ -10,7 +10,7 @@
 #--------------------------------------------------------------
 
 # Ask user for a date
-user_date = input("Enter a date: ")
+user_date = input("Enter a date: ") #This creates a prompt for user to type in a date
 
 #Create a variable pointing to the data file
 file_name = './data/raw/sara.txt'
