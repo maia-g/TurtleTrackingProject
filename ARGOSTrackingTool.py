@@ -16,15 +16,13 @@ file_name = './data/raw/sara.txt'
 file_object = open(file_name,'r')
 
 #Read contents of file into a list
-line_list = file_object.readlines()
+lineString = file_object.readline()
 
-#Close the file
-file_object.close()
-
-#Making a loop to iterate through ALL lines of the sara.txt
-for lineString in line_list:
-    #Check if lineis a data line
-    if lineString[0] in ("#", "u"): #if line starts with a # or u, then skip it and go to next
+#Making a loop to iterate through ALL lines of the sara.txt ONE at a time (better to use with large data sets)
+while lineString: #as long as reading line reutrns something, the loop will continue
+    #Check if line is a data line
+    if lineString[0] in ("#","u"): #if line starts with a # or u, then skip it and go to next
+        lineString = file_object.readline() # Get the next item BEFORE it continues so we don't get stuck in a loop
         continue
 
     #Split the string into a list of data items
@@ -39,3 +37,6 @@ for lineString in line_list:
 
     #Print the location of sara
     print(f"Record {record_id} indicates Sara was seen at lat:{obs_lat},lon:{obs_lon} on {obs_date}")
+
+    #Read next line (this also ensures the loop doesn't get stuck, and so it ends when this returns empty)
+    lineString = file_object.readline()
